@@ -33,6 +33,98 @@ If you want to apply and drop in one step, you can use git stash pop:
 
 
 
+
+
+
+anijesh@Anijeshs-MacBook-Air ~ % mkdir prog3
+anijesh@Anijeshs-MacBook-Air ~ % cd prog3
+anijesh@Anijeshs-MacBook-Air prog3 % git init
+Initialized empty Git repository in /Users/anijesh/prog3/.git/
+anijesh@Anijeshs-MacBook-Air prog3 % touch file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % open -e file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+anijesh@Anijeshs-MacBook-Air prog3 % git add .
+anijesh@Anijeshs-MacBook-Air prog3 % git commit -m "1st file in main" 
+[main (root-commit) 393ba41] 1st file in main
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % git log
+commit 393ba4130c9abe4757f4030b4554cb2210a3d4a1 (HEAD -> main)
+Author: Anijesh <anijeshkr@gmail.com>
+Date:   Tue Dec 31 15:01:38 2024 +0530
+
+    1st file in main
+anijesh@Anijeshs-MacBook-Air prog3 % git checkout -b feature-branch
+Switched to a new branch 'feature-branch'
+anijesh@Anijeshs-MacBook-Air prog3 % open -e file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % git add .
+anijesh@Anijeshs-MacBook-Air prog3 % git stash save "file1 modified'
+dquote> git stash save "file1 modified"
+dquote> open -e file1.txt
+dquote>          
+anijesh@Anijeshs-MacBook-Air prog3 % git stash save "file1 modified"
+Saved working directory and index state On feature-branch: file1 modified
+anijesh@Anijeshs-MacBook-Air prog3 % git checkout master
+error: pathspec 'master' did not match any file(s) known to git
+anijesh@Anijeshs-MacBook-Air prog3 % git checkout main
+Switched to branch 'main'
+anijesh@Anijeshs-MacBook-Air prog3 % open -e file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % git add .
+anijesh@Anijeshs-MacBook-Air prog3 % git commit -m "File1 checked and merge"
+[main ff63a0d] File1 checked and merge
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+anijesh@Anijeshs-MacBook-Air prog3 % git checkout -b feature2-branch
+Switched to a new branch 'feature2-branch'
+anijesh@Anijeshs-MacBook-Air prog3 % open -e file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % ghit stash apply
+zsh: command not found: ghit
+anijesh@Anijeshs-MacBook-Air prog3 % git stash apply
+error: Your local changes to the following files would be overwritten by merge:
+	file1.txt
+Please commit your changes or stash them before you merge.
+Aborting
+On branch feature2-branch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   file1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+anijesh@Anijeshs-MacBook-Air prog3 % git add .
+anijesh@Anijeshs-MacBook-Air prog3 % git commit -m "file updated successfully"
+[feature2-branch 1405405] file updated successfully
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+anijesh@Anijeshs-MacBook-Air prog3 % open -e file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % git checkout main
+Switched to branch 'main'
+anijesh@Anijeshs-MacBook-Air prog3 % open -e file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % git merge feature2-branch
+Updating ff63a0d..1405405
+Fast-forward
+ file1.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+anijesh@Anijeshs-MacBook-Air prog3 % open -e file.txt
+The file /Users/anijesh/prog3/file.txt does not exist.
+anijesh@Anijeshs-MacBook-Air prog3 % open -e file1.txt
+anijesh@Anijeshs-MacBook-Air prog3 % git branch --list
+  feature-branch
+  feature2-branch
+* main
+anijesh@Anijeshs-MacBook-Air prog3 % git stash list
+stash@{0}: On feature-branch: file1 modified
+anijesh@Anijeshs-MacBook-Air prog3 % git stash drop
+Dropped refs/stash@{0} (da58c1dd861d14c84ef3694f87b02c53ab3136f5)
+
+
+
+
+
+
+
 LAB-5
 first, add a line to remote (GitHub) repo
 git@ise:~/your-usn-here/proj-5$ gedit README.md // (or) echo "line-2" > README.md
