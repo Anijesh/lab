@@ -42,11 +42,6 @@ anijesh@Anijeshs-MacBook-Air prog3 % git init
 Initialized empty Git repository in /Users/anijesh/prog3/.git/
 anijesh@Anijeshs-MacBook-Air prog3 % touch file1.txt
 anijesh@Anijeshs-MacBook-Air prog3 % open -e file1.txt
-anijesh@Anijeshs-MacBook-Air prog3 % git add
-Nothing specified, nothing added.
-hint: Maybe you wanted to say 'git add .'?
-hint: Turn this message off by running
-hint: "git config advice.addEmptyPathspec false"
 anijesh@Anijeshs-MacBook-Air prog3 % git add .
 anijesh@Anijeshs-MacBook-Air prog3 % git commit -m "1st file in main" 
 [main (root-commit) 393ba41] 1st file in main
